@@ -8,16 +8,16 @@ public class Assignment1 {
     {
         File directory = new File(path);
 
-        String[] list = directory.list();
+        File[] list = directory.listFiles();
         if(list==null || list.length==0)
         return;
-        for(String s:list)
+        for(File s:list)
         {
-            File file = new File(path+s);
-            if(file.isDirectory())
-            findFolder(file.getAbsolutePath());
+           
+            if(s.isDirectory())
+            findFolder(s.getAbsolutePath());
             else
-            checkRegular(file,file.getAbsolutePath());
+            checkRegular(s,s.getAbsolutePath());
         }
        // System.out.println("total: "+count);
     }
@@ -31,8 +31,7 @@ public class Assignment1 {
         }
     }
     public static void main(String[] args) throws Exception {
-        File directory = new File("/home/sankmy/Desktop/");
-        findFolder("/home/sankmy/Desktop/");
+        findFolder("/home/sankmy/");
         System.out.println(count);
     }
 }
