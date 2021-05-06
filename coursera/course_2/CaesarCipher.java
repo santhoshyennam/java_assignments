@@ -1,9 +1,10 @@
 import java.io.*;
 public class CaesarCipher {
     static String alphabet ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static String encrypted_alphabet;
     static String encrypt(String input,int key)
     {
-       String encrypted_alphabet = alphabet.substring(key)+alphabet.substring(0,key);
+        encrypted_alphabet = alphabet.substring(key)+alphabet.substring(0,key);
         char[] input_array = input.toCharArray();
         StringBuilder sb = new StringBuilder();
         for(char ch:input_array)
@@ -22,6 +23,20 @@ public class CaesarCipher {
             System.out.println(encryptTwoKeys(newline, 23,22));
             newline=br.readLine();
         }
+    }
+
+    static String decrypString(String s)
+    {
+        StringBuffer sb = new StringBuffer();
+        char[] input = s.toCharArray();
+        for(char ch:input)
+        {
+            int index = encrypted_alphabet.indexOf(ch);
+            sb.append(alphabet.charAt(index));
+        }
+
+        return sb.toString();
+
     }
     static String encryptTwoKeys(String input,int key1,int key2)
     {
@@ -47,6 +62,8 @@ public class CaesarCipher {
     }
     public static void main(String[] args) throws Exception {
         System.out.println(encrypt("FIRST LEGION ATTACK EAST FLANK", 23));
+        System.out.println(decrypString("CFOPQIBDFLKXQQXZHBXPQCIXKH"));
+
         testCeasar();
     }
 }

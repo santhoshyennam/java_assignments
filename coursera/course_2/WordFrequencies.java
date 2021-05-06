@@ -42,11 +42,14 @@ public class WordFrequencies {
     }
     void writeoutput() throws Exception
     {
+        int sum = 0;
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
         for(int i=0;i<myFreqs.size();i++){
             System.out.println(myWords.get(i)+"\t"+myFreqs.get(i));
+            sum = sum + myFreqs.get(i);
            // writer.write(myWords.get(i)+"\t"+myFreqs.get(i));
         }
+        System.out.println("total words are "+sum);
         
         writer.close();
     }
